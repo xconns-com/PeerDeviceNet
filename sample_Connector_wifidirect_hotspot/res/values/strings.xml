@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Connector (WifiDirect Hotspot)</string>
+    <string name="setup_net">Setup WifiDirect Hotspot</string>
+    <string name="search_connect">Search, Connect Peers</string>
+    <string name="stop_search">Stop searching</string>
+    <string name="conn_peers">Connected Peers:</string>
+    <string name="on_net">You are owner of WifiDirect Hotspot </string>
+    <string name="miss_net">Please set up WifiDirect group</string>
+    <string name="done_return">Shutdown Router, Disconnect Devices and Finish</string>
+    <string name="no_wifi_direct_title">No Wifi Direct Support</string>
+    <string name="no_wifi_direct_message">This device is not Wifi Direct enabled</string>
+    <string name="ok">OK</string>
+    <string name="pass">pass_code</string>
+    
+</resources>
