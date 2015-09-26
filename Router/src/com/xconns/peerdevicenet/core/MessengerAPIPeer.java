@@ -121,12 +121,17 @@ public class MessengerAPIPeer implements Peer {
 				addr = data.getString(Router.MsgKey.PEER_ADDR);
 				port = data.getString(Router.MsgKey.PEER_PORT);
 				groupId = data.getString(Router.MsgKey.GROUP_ID);
+				byte[] msgData = data.getByteArray(Router.MsgKey.MSG_DATA);
+				/*
                 DeviceInfo targetDevice = null;
                 if (addr!=null&&addr.length()>0&&port!=null&port.length()>0) {
                     targetDevice = new DeviceInfo(name, addr, port);
                 }
 				router.sendMsg(groupId, targetDevice,
 						msg.getData());
+				*/
+				router.sendMsg(groupId, addr, Router.MsgId.SEND_MSG, msgData);
+
 				// now for testing, just bounce back
 				// recvedMsg("sent: " + msg.getData().getString(MSG_DATA));
 				break;

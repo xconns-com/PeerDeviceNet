@@ -89,7 +89,8 @@ interface CoreAPI {
 
 	void leaveGroup(String groupId);
 
-	void sendMsg(String groupId, DeviceInfo peer, Bundle msg);
+	//void sendMsg(String groupId, DeviceInfo peer, Bundle msg);
+	void sendMsg(String groupId, String destAddr, int msgId, byte[] msgData);
 
 	// shared
 	void getConnectedPeers(String group, int sessionId);
@@ -158,7 +159,7 @@ interface Peer {
 
 // the following 3 interfaces is interface for remote connections
 interface ConnectionRecver {
-	public void onRecvData(byte[] data, int len, Connection conn);
+	public void onRecvData(Bundle b, Connection conn);
 
 	public void onConnecting(Connection conn, byte[] token);
 
@@ -501,12 +502,13 @@ public class RouterService extends Service implements CoreAPI {
 		Log.d(TAG, "join group : " + groupId);
 		// register peer
 		mLocalGroupTable.put(groupId, ghandler);
-		//
+		/*
 		Bundle b = new Bundle();
 		b.putInt(Router.MsgKey.MSG_ID, MsgId.JOIN_GROUP);
 		b.putString(Router.MsgKey.GROUP_ID, groupId);
 		b.putString(Router.MsgKey.DEVICE_ADDR, mMyDeviceInfo.addr);
-		sendMsg(groupId, null, b);
+		sendMsg(groupId, null, b);*/
+		sendMsg(groupId, null, MsgId.JOIN_GROUP, null);
 
 		// send Self_Join msgs with all connected peer devices
 		Vector<Connection> conns = mGroupConnTable.get(groupId);
@@ -536,17 +538,66 @@ public class RouterService extends Service implements CoreAPI {
 		}
 		// unregister peer
 		mLocalGroupTable.remove(groupId);
-		//
+		/*
 		Bundle b = new Bundle();
 		b.putInt(Router.MsgKey.MSG_ID, MsgId.LEAVE_GROUP);
 		b.putString(Router.MsgKey.GROUP_ID, groupId);
 		b.putString(Router.MsgKey.DEVICE_ADDR, mMyDeviceInfo.addr);
-		sendMsg(groupId, null, b);
+		sendMsg(groupId, null, b);*/
+		sendMsg(groupId, null, MsgId.LEAVE_GROUP, null);
 
 		// sendMyLeft
 		ghandler.onSelfLeave();
 	}
 
+	public void sendMsg(String groupId, String destAddr, int msgId, byte[] msgData) {
+		Log.d(TAG, "send a new msg");
+		byte[] hdrData = Utils.marshallGrpMsgHdr(groupId,msgId);
+
+		// point-to-point send
+		if (destAddr != null) {
+			Connection conn = mRemoteConnTable.get(destAddr);
+			if (conn != null) {
+				Log.d(TAG, "send msg to " + destAddr);
+				conn.sendData(hdrData);
+				if (msgId == MsgId.SEND_MSG) {
+					conn.sendData(msgData);
+				}
+			} else {
+				Log.d(TAG, "failed to find connection for addr: " + destAddr);
+			}
+			return;
+		}
+
+		// multicast on groupId
+		// group join/leave msgs should be broadcasted
+		if (groupId != null && msgId != MsgId.JOIN_GROUP
+				&& msgId != MsgId.LEAVE_GROUP) {
+			Vector<Connection> conns = mGroupConnTable.get(groupId);
+			if (conns != null) {
+				for (Connection c : conns) {
+					c.sendData(hdrData);
+					if (msgId == MsgId.SEND_MSG) {
+						c.sendData(msgData);
+					}
+				}
+			}
+			return;
+		}
+
+		// broadcast
+		Log.d(TAG, "do a broadcast (for join/leave_group)");
+		Iterator<Connection> iter = mRemoteConnTable.values().iterator();
+		while (iter.hasNext()) {
+			iter.next().sendData(hdrData);
+			//should only for join-leave group, the following should not happen
+			if (msgId == MsgId.SEND_MSG) {
+				iter.next().sendData(msgData);
+			}
+		}
+	}
+	
+/*
 	public void sendMsg(String groupId, DeviceInfo peer, Bundle msg) {
 		Log.d(TAG, "send a new msg");
 		byte[] data = Utils.marshallBundle(msg);
@@ -582,6 +633,7 @@ public class RouterService extends Service implements CoreAPI {
 		while (iter.hasNext())
 			iter.next().sendData(data);
 	}
+*/
 	
 	public void checkNetTypeFromGO(int netType) {
 		if ((netType == NetInfo.WiFiDirect || netType == NetInfo.WiFiHotspot) && 
@@ -851,8 +903,7 @@ public class RouterService extends Service implements CoreAPI {
 
 	ConnectionRecver mConnRecver = new ConnectionRecver() {
 
-		public void onRecvData(byte[] data, int len, Connection srcConn) {
-			Bundle b = Utils.unmarshallBundle(data, len);
+		public void onRecvData(Bundle b, Connection srcConn) {
 			String groupId = b.getString(Router.MsgKey.GROUP_ID);
 			if (groupId == null || groupId.length() == 0) {
 				Log.e(TAG, "Incoming msg miss groupId");
@@ -863,27 +914,22 @@ public class RouterService extends Service implements CoreAPI {
 			switch (msgId) {
 			case MsgId.JOIN_GROUP:
 				Log.d(TAG, "recv joinGroup: " + groupId);
-				String addr = b.getString(Router.MsgKey.DEVICE_ADDR);
-				if (addr == null) {
-					return;
-				}
-				Connection conn = mRemoteConnTable.get(addr);
-				if (groupId != null && conn != null) {
+				if (groupId != null && srcConn != null) {
 					Vector<Connection> l = mGroupConnTable.get(groupId);
 					if (l == null) {
 						l = new Vector<Connection>();
 						mGroupConnTable.put(groupId, l);
-						l.add(conn);
-						conn.addPeerGroup(groupId);
+						l.add(srcConn);
+						srcConn.addPeerGroup(groupId);
 					} else {
-						if (!l.contains(conn)) {
-							l.add(conn);
-							conn.addPeerGroup(groupId);
+						if (!l.contains(srcConn)) {
+							l.add(srcConn);
+							srcConn.addPeerGroup(groupId);
 						}
 					}
 				}
 				// send peer_joined
-				DeviceInfo dev = conn.getPeerDevice();
+				DeviceInfo dev = srcConn.getPeerDevice();
 				if (ghandler != null) {
 					ghandler.onPeerJoin(dev);
 				}
@@ -891,22 +937,17 @@ public class RouterService extends Service implements CoreAPI {
 			case MsgId.LEAVE_GROUP:
 				Log.d(TAG, "recv leaveGroup: " + groupId);
 				groupId = b.getString(Router.MsgKey.GROUP_ID);
-				addr = b.getString(Router.MsgKey.DEVICE_ADDR);
-				if (addr == null) {
-					return;
-				}
-				conn = mRemoteConnTable.get(addr);
-				if (groupId != null && conn != null) {
+				if (groupId != null && srcConn != null) {
 					Vector<Connection> l = mGroupConnTable.get(groupId);
 					if (l != null) {
-						l.remove(conn);
+						l.remove(srcConn);
 						if (l.size() == 0)
 							mGroupConnTable.remove(groupId);
 					}
 				}
-				conn.delPeerGroup(groupId);
+				srcConn.delPeerGroup(groupId);
 				// send peer_leave
-				dev = conn.getPeerDevice();
+				dev = srcConn.getPeerDevice();
 				if (ghandler != null) {
 					ghandler.onPeerLeave(dev);
 				}

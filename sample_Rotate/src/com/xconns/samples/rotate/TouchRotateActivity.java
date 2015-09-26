@@ -16,13 +16,22 @@
 
 package com.xconns.samples.rotate;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
+
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcel;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,16 +43,10 @@ import com.xconns.peerdevicenet.DeviceInfo;
 import com.xconns.peerdevicenet.Router;
 import com.xconns.peerdevicenet.RouterGroupClient;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.IntBuffer;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
 
 // a simple msg for rotation info. 
 class RotateMsg {
+	public static final String TAG = "RotateMsg";
 	// msg ids
 	public final static int INIT_ORIENT_REQ = 1; //inital query of peers' orientation
 	public final static int INIT_ORIENT_RSP = 2; //responses of peers' orientation
@@ -59,26 +62,29 @@ class RotateMsg {
 		ry = y;
 	}
 	
-	//the following using android Parcel to marshaling data, could use JSON etc.
+	//the following using JSON to marshaling data.
 	public byte[] marshall() {
-		final Parcel parcel = Parcel.obtain();
-		byte[] data;
-		parcel.writeInt(msgId);
-		parcel.writeFloat(rx);
-		parcel.writeFloat(ry);
-		data = parcel.marshall();
-		parcel.recycle();
-		return data;
+		try {
+			JSONArray json = new JSONArray();
+			json.put(0, msgId);
+			json.put(1, rx);
+			json.put(2, ry);
+			return json.toString().getBytes();
+		}  catch(JSONException je) {
+			Log.e(TAG, je.toString());
+			return null;
+		}
 	}
 
 	public void unmarshall(byte[] data, int len) {
-		final Parcel parcel = Parcel.obtain();
-		parcel.unmarshall(data, 0, len);
-		parcel.setDataPosition(0);
-		msgId = parcel.readInt();
-		rx = parcel.readFloat();
-		ry = parcel.readFloat();
-		parcel.recycle();
+		try {
+			JSONArray json = new JSONArray(new String(data));
+			msgId = json.getInt(0);
+			rx = (float)json.getDouble(1);
+			ry = (float)json.getDouble(2);
+		}  catch(JSONException je) {
+			Log.e(TAG, je.toString());
+		}
 	}
 
 }
