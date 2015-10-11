@@ -1,0 +1,8 @@
+include ':api'
+include ':Router'
+include ':sample_Chat'
+include ':sample_Rotate'
+include ':ConnSettings'
+include ':sample_Connector_wifi_intent'
+include ':sample_Connector_wifi_aidl'
+include ':sample_Connector_wifidirect_hotspot'
