@@ -36,7 +36,7 @@ public class Router {
      * clients will send intents/messages to Router services by calling startService() and
      * received intents/messages from Router services by registering BroadcastReceivers.
      * All application message data are passed as
-     * "extra" data items in intents and all extra data key names are defined in {@link com.xconns.peerdevicenet.Router.MsgKey Router.MsgKey}.
+     * "extra" data items in intents and all extra data key names are defined in {@link MsgKey Router.MsgKey}.
      * <p>
      * the api includes the following groups of intent actions:
      * <ol>
@@ -403,7 +403,7 @@ public class Router {
          * <dt>PEER_NAME string</dt><dd>peer device name.</dd>
          * <dt>PEER_ADDR string</dt><dd>peer device address.</dd>
          * <dt>PEER_PORT string</dt><dd>peer device port.</dd>
-         * <dt>CONN_DENY_CODE integer</dt><dd>{@link com.xconns.peerdevicenet.Router.ConnFailureCode Connection Failure code} for the reason of denial.</dd>
+         * <dt>CONN_DENY_CODE integer</dt><dd>{@link ConnFailureCode Connection Failure code} for the reason of denial.</dd>
          * </dl>
          */
         public static final String ACTION_DENY_CONNECTION = "com.xconns.peerdevicenet.DENY_CONNECTION";
@@ -428,7 +428,7 @@ public class Router {
          * <dt>PEER_NAME string</dt><dd>peer device name.</dd>
          * <dt>PEER_ADDR string</dt><dd>peer device address.</dd>
          * <dt>PEER_PORT string</dt><dd>peer device port.</dd>
-         * <dt>CONN_DENY_CODE integer</dt><dd>{@link com.xconns.peerdevicenet.Router.ConnFailureCode Connection Failure code} for the reason of denial.</dd>
+         * <dt>CONN_DENY_CODE integer</dt><dd>{@link ConnFailureCode Connection Failure code} for the reason of denial.</dd>
          * </dl>
          */
         public static final String ACTION_CONNECTION_FAILED = "com.xconns.peerdevicenet.CONNECTION_FAILED";
@@ -618,9 +618,9 @@ public class Router {
 	 * clients will use a messenger to send messages to Router services and
 	 * register another messenger to receive messages from Router services;
 	 * there is 1-1 correspondence between intent names and message ids.
-	 * All message data are passed as a bundle with data items indexed by keys. 
-     * The message data keys is defined at 
-     * {@link com.xconns.peerdevicenet.Router.MsgKey Router.MsgKey} class.
+	 * All message data are passed as a bundle with data items indexed by keys.
+     * The message data keys is defined at
+     * {@link MsgKey Router.MsgKey} class.
 	 * <p>
 	 * include the following groups of message ids:
 	 * <ol>
@@ -647,7 +647,7 @@ public class Router {
 	 * as following:
 	 * <ol>
 	 * <li>Initialization at onCreate() or onResume():
-	 * 
+	 *
 	 * <pre>
      //first bind to messenger service:
      Intent intent = new Intent("com.xconns.peerdevicenet.Messenger");
@@ -658,10 +658,10 @@ public class Router {
      msg.replyTo = mMessenger;
      mService.send(msg);
 	 </pre>
-	 * 
+	 *
 	 * <li>use messenger to send messages to Router services to perform
 	 * operations:
-	 * 
+	 *
 	 <pre>
      Message msg = Message.obtain(null, Router.MsgId.SEND_MSG, 0, 0);
      Bundle b = new Bundle();
@@ -670,9 +670,9 @@ public class Router {
      msg.setData(b);
      mService.send(msg);
 	 </pre>
-	 * 
+	 *
 	 * <li>cleanup at onDestroy() or onPause():
-	 * 
+	 *
 	 <pre>
      // first tell Router services we are leaving:
      Message msg = Message.obtain(null, Router.MsgId.LEAVE_GROUP);
@@ -685,7 +685,7 @@ public class Router {
      // finally unbind messenger service
      unbindService(mConnection);
 	 </pre>
-	 * 
+	 *
 	 * </ol>
 	 * <p>
 	 * For detailed tutorial on how to use messengers talk to GroupService and
@@ -797,7 +797,7 @@ public class Router {
          * <dt>PEER_NAME string</dt><dd>peer device name.</dd>
          * <dt>PEER_ADDR string</dt><dd>peer device address.</dd>
          * <dt>PEER_PORT string</dt><dd>peer device port.</dd>
-         * <dt>CONN_DENY_CODE integer</dt><dd>{@link com.xconns.peerdevicenet.Router.ConnFailureCode Connection Failure code} for the reason of denial.</dd>
+         * <dt>CONN_DENY_CODE integer</dt><dd>{@link ConnFailureCode Connection Failure code} for the reason of denial.</dd>
          * </dl>
          */
         public final static int DENY_CONNECTION = -10303;
@@ -823,7 +823,7 @@ public class Router {
          * <dt>PEER_NAME string</dt><dd>peer device name.</dd>
          * <dt>PEER_ADDR string</dt><dd>peer device address.</dd>
          * <dt>PEER_PORT string</dt><dd>peer device port.</dd>
-         * <dt>CONN_DENY_CODE integer</dt><dd>{@link com.xconns.peerdevicenet.Router.ConnFailureCode Connection Failure code} for the reason of denial.</dd>
+         * <dt>CONN_DENY_CODE integer</dt><dd>{@link ConnFailureCode Connection Failure code} for the reason of denial.</dd>
          * </dl>
          */
         public final static int CONNECTION_FAILED = -10311;

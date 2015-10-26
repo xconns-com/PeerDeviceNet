@@ -81,7 +81,6 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 
 		private Activity activity = null;
 
-		private WifiDirectGroupManager grpMgr = null;
 		private NetInfo mCurrWifiDirectNet = null;
 
 		private TextView mNetMsg = null;
@@ -118,23 +117,6 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 			super.onAttach(activity);
 			activity = act;
 							
-			grpMgr = new WifiDirectGroupManager(act, new WifiDirectGroupManager.Handler() {
-				@Override
-				public void onError(String msg) {
-					Log.d(TAG, "Wifi Direct Group add/del error: "+msg);
-					Intent in = new Intent(
-							Settings.ACTION_WIFI_SETTINGS);
-					startActivity(in);
-				}
-				@Override
-				public void onWifiDirectNotEnabled() {
-					Log.d(TAG, "Please enable wifi direct first");
-					Intent in = new Intent(
-							Settings.ACTION_WIFI_SETTINGS);
-					startActivity(in);
-				}
-			});
-			
 		}
 
 		@Override
@@ -211,37 +193,25 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 		}
 
 		@Override
-		public void onResume() {
-			// TODO Auto-generated method stub
-			super.onResume();
-			grpMgr.onResume();
-
-		}
-		
-		@Override
-		public void onPause() {
-			// TODO Auto-generated method stub
-			super.onPause();
-				grpMgr.onPause();
-		}
-
-		@Override
 		public void onDestroy() {
 			// TODO Auto-generated method stub
 			super.onDestroy();
 			Log.d(TAG, "ConnMgrServ destroyed, unbind connHnadler");
 			connClient.unbindService();
-				grpMgr.onDestroy();
 		}
 
 		private void configWifiDirect() {
+			NetInfo netinfo = new NetInfo();
+			netinfo.type = NetInfo.WiFiDirect;
 			if(mCurrWifiDirectNet == null) {
-				grpMgr.createNetwork();
+				connClient.connectNetwork(netinfo);
+				mNetMsg.setText("create and connect to Wifi Direct Group ...");
 			} 
 			else if (mCurrWifiDirectNet.pass == null || mCurrWifiDirectNet.pass.length() == 0) {
 				//i am not group owner, recreate
-				grpMgr.removeNetwork();
-				grpMgr.createNetwork();
+				connClient.disconnectNetwork(netinfo);
+				connClient.connectNetwork(netinfo);
+				mNetMsg.setText("re-create and connect to Wifi Direct Group ...");
 			}
 		}
 
@@ -403,7 +373,10 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 			@Override
 			public void onNetworkConnectionFailed(NetInfo net) {
 				// TODO Auto-generated method stub
-				
+				Message msg = mHandler
+						.obtainMessage(Router.MsgId.NETWORK_CONNECTION_FAILED);
+				msg.obj = net;
+				mHandler.sendMessage(msg);				
 			}
 
 		};
@@ -570,6 +543,21 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 					if (net != null && net.type == NetInfo.WiFiDirect) {
 						mCurrWifiDirectNet = null;
 						updateGuiNoNet();
+					}
+					break;
+				case Router.MsgId.NETWORK_CONNECTION_FAILED:
+					net = (NetInfo) msg.obj;
+					Log.d(TAG,
+							"onNetworkConnectionFailed: " + net.toString());
+					if (net != null && net.type == NetInfo.WiFiDirect) {
+							mCurrWifiDirectNet = null;
+							//wifi direct group create failed, must be not enabled
+							//ask user to re-enable it
+							Log.d(TAG, "Wifi Direct Group add/del error: "+msg);
+							mNetMsg.setText("Wifi Direct not enabled, please enable it");
+							Intent in = new Intent(
+									Settings.ACTION_WIFI_SETTINGS);
+							startActivity(in);
 					}
 					break;
 				case Router.MsgId.SET_CONNECTION_INFO:

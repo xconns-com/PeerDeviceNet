@@ -16,9 +16,6 @@
 
 package com.xconns.peerdevicenet;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -28,8 +25,8 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.xconns.peerdevicenet.IRouterGroupHandler;
-import com.xconns.peerdevicenet.IRouterGroupService;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * RouterGroupClient wrapper class is the preferred way to access the asynchronous one-way AIDL api of Router Group Service.

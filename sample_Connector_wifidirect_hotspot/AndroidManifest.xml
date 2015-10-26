@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="23" />
 
     <uses-permission android:name="com.xconns.peerdevicenet.permission.REMOTE_MESSAGING" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -28,7 +28,9 @@
         <activity
             android:name="com.xconns.peerdevicenet.samples.connector_wifidirect_hotspot.ConnectorByWifiDirectHotspot"
             android:label="@string/app_name"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

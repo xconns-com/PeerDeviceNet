@@ -16,9 +16,6 @@
 
 package com.xconns.peerdevicenet;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -28,8 +25,8 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.xconns.peerdevicenet.IRouterConnectionHandler;
-import com.xconns.peerdevicenet.IRouterConnectionService;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * RouterConnectionClient wrapper class is the preferred way to access the asynchronous one-way AIDL api of Router Connection Service.
@@ -340,7 +337,7 @@ public class RouterConnectionClient {
 		@Override
 		public void onNetworkConnecting(NetInfo net) throws RemoteException {
 			// TODO Auto-generated method stub
-			Log.d(TAG, "onNetworkDisconnected callback");
+			Log.d(TAG, "onNetworkConnecting callback");
 			registeredHandler.onNetworkConnecting(net);			
 		}
 
@@ -348,7 +345,7 @@ public class RouterConnectionClient {
 		public void onNetworkConnectionFailed(NetInfo net)
 				throws RemoteException {
 			// TODO Auto-generated method stub
-			Log.d(TAG, "onNetworkDisconnected callback");
+			Log.d(TAG, "onNetworkConnectionFailed callback");
 			registeredHandler.onNetworkConnectionFailed(net);			
 		}
 		@Override

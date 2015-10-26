@@ -14,7 +14,7 @@ It doesn't embed router directly, instead invokes an external router's APIs embe
 2. To access router's api, add peerdevicenet-api.jar in one of two ways:
              
         * download peerdevicenet-api.jar from MavenCentral(http://search.maven.org/#search|ga|1|peerdevicenet) and copy to project's "libs/" directory.
-        * if you are using android's new gradle build system, you can import it as 'com.xconns.peerdevicenet:peerdevicenet-api:1.1.7'.
+        * if you are using android's new gradle build system, you can import it as 'com.xconns.peerdevicenet:peerdevicenet-api:1.1.8'.
 
 3. Router project also has a WifiDirectGroupManager which encapsulate the functionality to create and remove p2p groups, which we'll also copy here for reuse. 
 

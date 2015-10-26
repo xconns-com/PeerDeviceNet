@@ -4,14 +4,14 @@ apply plugin: 'signing'
 
 group='com.xconns.peerdevicenet'
 archivesBaseName='peerdevicenet-api'
-version='1.1.7'
+version='1.1.8'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
     sourceSets {
@@ -38,4 +38,3 @@ android {
         release.setRoot('build-types/release')
     }
 }
-
