@@ -2,88 +2,102 @@
 <items version="2" >
 
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_intent/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_aidl/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_intent/build/intermediates/pre-dexed/debug/android-support-v4-e760cb65f14b5ddfce6ef68229f835971e3e8b10.jar" />
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_aidl/build/intermediates/pre-dexed/debug/android-support-v4-fd22ae2542833b4a16e850089100d264d424aee1.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Rotate/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/ConnSettings/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Rotate/build/intermediates/pre-dexed/debug/android-support-v4-cb50796728f7cb16ed316aaa3aa66bb79fb72cb1.jar" />
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/ConnSettings/build/intermediates/pre-dexed/release/android-support-v4-748bbc0fa1a258fa13fe64d90b50c07605df82b7.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/ConnSettings/libs/android-support-v4.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Chat/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/ConnSettings/build/intermediates/pre-dexed/debug/android-support-v4-6a5728ec35183c770823792bd33e7f381b2b93db.jar" />
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Chat/build/intermediates/pre-dexed/debug/android-support-v4-b0ee0535fe687652473f0e0734d8ba257d07779b.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_aidl/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifidirect_hotspot/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_aidl/build/intermediates/pre-dexed/debug/android-support-v4-2a47a1fec6eb1dc6086f2c0b515d5bf579df26e6.jar" />
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifidirect_hotspot/build/intermediates/pre-dexed/release/android-support-v4-e120b84c6e5fdba55515b5616a16d9ec84b6aa91.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Chat/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Rotate/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="47bec5dc5b65963a9db0d63906023d6c98e98189">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Chat/build/intermediates/pre-dexed/debug/classes-f6b1b54346031d3844a61c6b0764f471c5fc7b97.jar" />
+        sha1="ceae957304cd330372c8add23f2f2e853dd50909">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Rotate/build/intermediates/pre-dexed/debug/classes-6f9f4056350394a9687f5f9f6836264546e7d17d.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_aidl/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifidirect_hotspot/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="47bec5dc5b65963a9db0d63906023d6c98e98189">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_aidl/build/intermediates/pre-dexed/debug/classes-75a581c324795d5a035045f8e86e8d56b7633661.jar" />
+        sha1="ceae957304cd330372c8add23f2f2e853dd50909">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifidirect_hotspot/build/intermediates/pre-dexed/debug/classes-765656f844de99935be89db8eb42ccca86482703.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_intent/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="47bec5dc5b65963a9db0d63906023d6c98e98189">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifi_intent/build/intermediates/pre-dexed/debug/classes-8142eafa5e61115fbc8cfeb9444e0a153f2fa9fb.jar" />
-    </item>
-    <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Chat/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_intent/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Chat/build/intermediates/pre-dexed/debug/android-support-v4-67f26eb3e4b51b7c49037d042ea93002d7a51a83.jar" />
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_intent/build/intermediates/pre-dexed/debug/android-support-v4-c5f7ad6b78f4ffa288a6cbc001371de222dbc76d.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifidirect_hotspot/libs/android-support-v4.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Chat/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ceae957304cd330372c8add23f2f2e853dd50909">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Chat/build/intermediates/pre-dexed/debug/classes-3c251dccd79d87f2918159d655bdad258f82748d.jar" />
+    </item>
+    <item
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_intent/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ceae957304cd330372c8add23f2f2e853dd50909">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_intent/build/intermediates/pre-dexed/debug/classes-1d12a0e75e19186e90b0d97fad24c7e1c990c00d.jar" />
+    </item>
+    <item
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/ConnSettings/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ceae957304cd330372c8add23f2f2e853dd50909">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/ConnSettings/build/intermediates/pre-dexed/debug/classes-a88139c0cce3fed73ee8f905d42066da5f03c68f.jar" />
+    </item>
+    <item
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifidirect_hotspot/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifidirect_hotspot/build/intermediates/pre-dexed/debug/android-support-v4-c877e87cec0e98a3948dc3b43919d34d468c358f.jar" />
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifidirect_hotspot/build/intermediates/pre-dexed/debug/android-support-v4-058f399c851fcecf8a1807f68dee9b409cdf7f7d.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/ConnSettings/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_aidl/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="47bec5dc5b65963a9db0d63906023d6c98e98189">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/ConnSettings/build/intermediates/pre-dexed/debug/classes-80fed6808a601cf2f8efc9c521b1a51e9de10ba4.jar" />
+        sha1="ceae957304cd330372c8add23f2f2e853dd50909">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Connector_wifi_aidl/build/intermediates/pre-dexed/debug/classes-c65a3486e9dd9165428048198c8c5bc90a4e8d46.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Rotate/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/ConnSettings/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="47bec5dc5b65963a9db0d63906023d6c98e98189">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Rotate/build/intermediates/pre-dexed/debug/classes-8fddd513cf56e8f74df79f3bd527bc67a36546e1.jar" />
+        sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/ConnSettings/build/intermediates/pre-dexed/debug/android-support-v4-885f09337b67c106c50eadce588c551be4b82cd5.jar" />
     </item>
     <item
-        jar="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifidirect_hotspot/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/classes.jar"
+        jar="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Rotate/build/intermediates/exploded-aar/com.xconns.peerdevicenet/Router/1.1.8/jars/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="47bec5dc5b65963a9db0d63906023d6c98e98189">
-        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/PeerDeviceNet_release_20151025/sample_Connector_wifidirect_hotspot/build/intermediates/pre-dexed/debug/classes-754add08df20d3e68d5727227931d35edeb39b8e.jar" />
+        sha1="0725d32f682f72bdfb3f61a2cd04dc3763710b6c">
+        <dex dex="/home/dev/Workspaces/Workspace/xconns-com/chkout_20151025/PeerDeviceNet/sample_Rotate/build/intermediates/pre-dexed/debug/android-support-v4-d7ef30792a4becfb97d86fe0a967d6497a24b023.jar" />
     </item>
 
 </items>
