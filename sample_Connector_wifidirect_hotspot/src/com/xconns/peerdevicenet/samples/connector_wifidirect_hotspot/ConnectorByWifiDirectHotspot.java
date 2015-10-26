@@ -29,7 +29,6 @@ import com.xconns.peerdevicenet.DeviceInfo;
 import com.xconns.peerdevicenet.NetInfo;
 import com.xconns.peerdevicenet.Router;
 import com.xconns.peerdevicenet.RouterConnectionClient;
-import com.xconns.peerdevicenet.core.WifiDirectGroupManager;
 
 public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 	boolean wifiDirectSupported = false;
